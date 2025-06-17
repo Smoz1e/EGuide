@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EGuide - Путеводитель по Екатеринбургу</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=ABeeZee&family=Inter:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo-container">
+                <a href="index.html" style="text-decoration: none; color: inherit;">
+                <div class="logo">
+                    <div class="logo-image">
+                        <img src="{% static 'images/map.jpg' %}" alt="Карта">
+                        <span class="logo-letter">E</span>
+                    </div>
+                    <span class="logo-text">Guide</span>
+                </div>
+                </a>
+                <div class="search-box">
+                    <img src="{% static 'images/search.png' %}" alt="Поиск">
+                </div>
+            </div>
+            <div class="header-controls">
+                <a href="login.html"><button class="login-button">Войти</button></a>
+            </div>
+        </header>
+
+        <main>
+            <div class="content">
+                <h1>Открой для себя лучшее в Екатеринбурге . . .</h1>
+                <p class="description">Исследуйте лучшие места города<br><br>Отройте для себя скрытые сокровища, прочитайте отзывы и спланируйте свой идеальный день в Екатеринбурге с помощью нашего подробного путеводителя по городу</p>
+                <a href="map.html"><button class="explore-button">Исследуйте сейчас</button></a>
+            </div>
+            <div class="background-image">
+                <img src="{% static 'images/background.jpg' %}" alt="Екатеринбург">
+            </div>
+            <div class="clouds">
+                <img src="{% static 'images/nubes.svg' %}" alt="Облака">
+            </div>
+            <div class="clouds_2">
+                <img src="{% static 'images/nubes.svg' %}" alt="Облака">
+            </div>
+        </main>
+        <footer>
+            <p>© EGuide 2025. Все права защищены.</p>
+        </footer>
+    </div>
+</body>
+</html>
