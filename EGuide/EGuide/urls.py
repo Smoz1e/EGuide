@@ -24,4 +24,5 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('', include('RegisterAndAutor.urls')),
     path('', include('ProfileUser.urls')),
+    path('', include('Map.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

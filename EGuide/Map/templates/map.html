@@ -1,26 +1,28 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'map.css' %}">
     <title>EGuide - Карта</title>
 </head>
 <body>
     <div class="header">
-        <a href="index.html" style="text-decoration: none; color: inherit;">
+        <a href="{% url 'profile' %}" style="text-decoration: none; color: inherit;">
             <div class="logo">
                 <div class="logo-image">
-                    <img src="../images/map.jpg" alt="Карта">
+                    <img src="{% static 'images/map.jpg' %}" alt="Карта">
                     <span class="logo-letter">E</span>
                 </div>
                 <span class="logo-text">Guide</span>
             </div>
         </a>
         <div class="search-container">
-            <img src="../images/search.png" alt="Поиск" class="search-icon">
+            <img src="{% static 'images/search.png' %}" alt="Поиск" class="search-icon">
             <input type="text" class="search-input">
         </div>
-        <a href="login.html"><button class="login-button">Войти</button></a>
+        <a href="{% url 'login' %}"><button class="login-button">Войти</button></a>
     </div>
 
     <div class="main-content">
@@ -30,11 +32,11 @@
                     <h1 class="place-name">МФЦ</h1>
                     <div class="buttons-container">
                         <button class="route-button">
-                            <img src="../images/distance_icon.png" alt="Расстояние" class="route-icon">
+                            <img src="{% static 'images/distance_icon.png' %}" alt="Расстояние" class="route-icon">
                             <span>Маршрут</span>
                         </button>
                         <button class="bookmark-button">
-                            <img src="../images/bookmark.svg" alt="Закладка">
+                            <img src="{% static 'images/bookmark.svg' %}" alt="Закладка">
                         </button>
                     </div>
                 </div>
@@ -44,7 +46,7 @@
                 </div>
                 <div class="rating-status">
                     <div class="rating">
-                        <img src="../images/star.svg" alt="Звезда" class="star-icon">
+                        <img src="{% static 'images/star.svg' %}" alt="Звезда" class="star-icon">
                         <span class="rating-value">4.8</span>
                     </div>
                     <div class="status">ОТКРЫТО</div>
@@ -160,6 +162,6 @@
         <span>О нас</span>
     </div>
 
-    <script src="../js/map.js"></script>
+    <script src="{% static 'map.js' %}"></script>
 </body>
 </html>
