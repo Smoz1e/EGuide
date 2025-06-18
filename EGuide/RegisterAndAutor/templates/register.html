@@ -1,4 +1,4 @@
-{%load static%}
+{% load static %}
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -13,7 +13,7 @@
     <div class="registration-page">
         <header>
             <div class="logo-container">
-                <a href="index.html" style="text-decoration: none; color: inherit;">
+                <a href="/" style="text-decoration: none; color: inherit;">
                 <div class="logo">
                     <div class="logo-image">
                         <img src="{% static 'images/logo-background.jpg' %}" alt="Logo Background">
@@ -24,10 +24,9 @@
                 </a>
             </div>
             <div class="header-controls">
-                <a href="login.html"><button class="login-button">Войти</button></a>
+                <a href="{% url 'login' %}"><button class="login-button">Войти</button></a>
             </div>
         </header>
-
         <div class="main-content">
             <div class="image-container">
                 <div class="illustration">
@@ -38,40 +37,41 @@
                     Спланируй свой день прямо сейчас
                 </div>
             </div>
-
             <div class="form-container">
-                <form class="registration-form">
+                <form method="post" class="registration-form" novalidate>
+                    {% csrf_token %}
                     <h2 class="form-title">Регистрация</h2>
-                    
+                    {% if messages %}
+                        <ul class="messages">
+                        {% for message in messages %}
+                            <li>{{ message }}</li>
+                        {% endfor %}
+                        </ul>
+                    {% endif %}
+                    {{ form.non_field_errors }}
                     <div class="input-group">
-                        <label for="name" class="input-label">Имя</label>
-                        <input type="text" id="name" class="input-field" required>
+                        <label for="id_name" class="input-label">Имя</label>
+                        <input type="text" name="name" class="input-field" id="id_name" required>
                     </div>
-                    
                     <div class="input-group">
-                        <label for="email" class="input-label">E-mail</label>
-                        <input type="email" id="email" class="input-field" required>
+                        <label for="id_email" class="input-label">E-mail</label>
+                        <input type="email" name="email" class="input-field" id="id_email" required>
                     </div>
-                    
                     <div class="input-group">
-                        <label for="password" class="input-label">Пароль</label>
-                        <input type="password" id="password" class="input-field" required>
+                        <label for="id_password1" class="input-label">Пароль</label>
+                        <input type="password" name="password1" class="input-field" id="id_password1" required>
                     </div>
-                    
                     <div class="input-group">
-                        <label for="confirm-password" class="input-label">Подтверждение пароля</label>
-                        <input type="password" id="confirm-password" class="input-field" required>
+                        <label for="id_password2" class="input-label">Подтверждение пароля</label>
+                        <input type="password" name="password2" class="input-field" id="id_password2" required>
                     </div>
-                    
                     <button type="submit" class="submit-btn">Зарегистрироваться</button>
-                    
                     <div class="login-link">
                         <span>Уже есть аккаунт?</span> <a href="{% url 'login' %}">Войти</a>
                     </div>
                 </form>
             </div>
         </div>
-
         <footer>
             <p>© EGuide 2025. Все права защищены.</p>
             <p>О нас</p>

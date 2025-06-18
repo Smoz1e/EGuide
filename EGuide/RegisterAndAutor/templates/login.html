@@ -1,4 +1,4 @@
-{%load static%}
+{% load static %}
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -13,7 +13,7 @@
     <div class="login-page">
         <header>
             <div class="logo-container">
-                <a href="index.html" style="text-decoration: none; color: inherit;">
+                <a href="/" style="text-decoration: none; color: inherit;">
                 <div class="logo">
                     <div class="logo-image">
                         <img src="{% static 'images/map.jpg' %}" alt="Карта">
@@ -24,7 +24,6 @@
                 </a>
             </div>
         </header>
-
         <div class="main-content">
             <div class="image-container">
                 <img src="{% static 'images/vector-image.svg' %}" alt="Декоративное изображение" class="background-image">
@@ -32,30 +31,35 @@
                     Открой для себя<br>лучшее . . .
                 </div>
             </div>
-
             <div class="form-container">
                 <div class="login-form">
                     <h2 class="form-title" style="text-align: center;">Вход</h2>
-                    
-                    <div class="input-group">
-                        <label for="email" class="input-label">E-mail</label>
-                        <input type="email" id="email" class="input-field">
-                    </div>
-                    
-                    <div class="input-group">
-                        <label for="password" class="input-label">Пароль</label>
-                        <input type="password" id="password" class="input-field">
-                    </div>
-                    
-                    <button class="login-button">Войти</button>
-                    
+                    {% if messages %}
+                        <ul class="messages">
+                        {% for message in messages %}
+                            <li>{{ message }}</li>
+                        {% endfor %}
+                        </ul>
+                    {% endif %}
+                    <form method="post" novalidate>
+                        {% csrf_token %}
+                        {{ form.non_field_errors }}
+                        <div class="input-group">
+                            <label for="id_username" class="input-label">E-mail</label>
+                            <input type="email" name="username" class="input-field" id="id_username" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="id_password" class="input-label">Пароль</label>
+                            <input type="password" name="password" class="input-field" id="id_password" required>
+                        </div>
+                        <button type="submit" class="login-button">Войти</button>
+                    </form>
                     <div class="register-link">
                         <span>Нет аккаунта?</span> <a href="{% url 'register' %}" style="text-decoration-line: underline; text-underline-offset: 5px;"><br>Зарегистрируйтесь</a>
                     </div>
                 </div>
             </div>
         </div>
-
         <footer>
             <p>© EGuide 2025. Все права защищены.</p>
             <p>О нас</p>
