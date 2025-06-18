@@ -19,7 +19,8 @@ class ProfileEditForm(forms.ModelForm):
     date_of_birth = forms.DateField(required=False, label='Дата рождения', widget=forms.DateInput(attrs={'type': 'date'}))
     email = forms.EmailField(label='E-mail')
     name = forms.CharField(label='Имя')
+    avatar = forms.ImageField(label='Фото', required=False)
 
     class Meta:
         model = CustomUser
-        fields = ['name', 'email', 'date_of_birth']
+        fields = ['name', 'email', 'date_of_birth', 'avatar']

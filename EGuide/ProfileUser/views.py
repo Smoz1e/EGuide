@@ -7,7 +7,7 @@ from django.contrib import messages
 def profile_view(request):
     user = request.user
     if request.method == 'POST':
-        form = ProfileEditForm(request.POST, instance=user)
+        form = ProfileEditForm(request.POST, request.FILES, instance=user)
         if form.is_valid():
             form.save()
             messages.success(request, 'Профиль успешно обновлён!')

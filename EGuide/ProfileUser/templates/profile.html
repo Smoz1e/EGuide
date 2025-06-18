@@ -8,6 +8,34 @@
     <link rel="stylesheet" href="{% static 'profile.css' %}">
     <link rel="stylesheet" href="{% static 'style.css' %}">
     <link href="https://fonts.googleapis.com/css2?family=ABeeZee&family=Inter:wght@700&display=swap" rel="stylesheet">
+    <style>
+        #id_avatar { display: none; }
+        .form-errors { color: red; margin-bottom: 10px; }
+        .profile-photo img,
+        .modal-profile-photo img {
+            width: 210px;
+            height: 210px;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            background: #f3f3f3;
+            border: 2px solid #e0e0e0;
+            display: block;
+        }
+        .profile-photo, .modal-profile-photo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 210px;
+            height: 210px;
+            min-width: 210px;
+            min-height: 210px;
+            border-radius: 50%;
+            overflow: hidden;
+            background: #f3f3f3;
+        }
+    </style>
 </head>
 <body>
     <div class="profile-page">
@@ -40,7 +68,11 @@
         <div class="main-content">
             <div class="profile-container">
                 <div class="profile-photo">
-                    <span>Фото</span>
+                    {% if user.avatar %}
+                        <img src="{{ user.avatar.url }}" alt="Аватар">
+                    {% else %}
+                        <span>Фото</span>
+                    {% endif %}
                 </div>
                 <div class="profile-name">
                     {{ user.name }}
@@ -60,13 +92,30 @@
                 </div>
                 <form method="post" enctype="multipart/form-data">
                     {% csrf_token %}
+                    {% if form.errors %}
+                        <ul class="form-errors">
+                            {% for field in form %}
+                                {% for error in field.errors %}
+                                    <li>{{ field.label }}: {{ error }}</li>
+                                {% endfor %}
+                            {% endfor %}
+                            {% for error in form.non_field_errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
                     <div class="modal-body">
-                        <div class="modal-profile-photo">
-                            Фото
-                            <input type="file" id="profilePhotoUpload" accept="image/*">
+                        <div class="modal-profile-photo" style="cursor:pointer;" onclick="document.getElementById('id_avatar').click();">
+                            {% if user.avatar %}
+                                <img src="{{ user.avatar.url }}" alt="Аватар">
+                            {% else %}
+                                Фото
+                            {% endif %}
+                            {{ form.avatar }}
                         </div>
-                        <div class="modal-profile-name">
-                            {{ user.name }}
+                        <div class="modal-form-group">
+                            <label class="modal-form-label">Имя</label>
+                            <input type="text" name="name" class="modal-form-input" value="{{ user.name }}" required>
                         </div>
                         <div class="modal-form-group">
                             <label class="modal-form-label">Почта</label>
