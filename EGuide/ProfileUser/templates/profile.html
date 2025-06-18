@@ -1,0 +1,90 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EGuide - Профиль пользователя</title>
+    <link rel="stylesheet" href="{% static 'profile.css' %}">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=ABeeZee&family=Inter:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="profile-page">
+        <header>
+            <div class="logo-container">
+                <a href="/" style="text-decoration: none; color: inherit;">
+                    <div class="logo">
+                        <div class="logo-image">
+                            <img src="{% static 'images/map.jpg' %}" alt="Карта">
+                            <span class="logo-letter">E</span>
+                        </div>
+                        <span class="logo-text">Guide</span>
+                    </div>
+                </a>
+            </div>
+            <div class="header-controls">
+                <a href="{% url 'login' %}"><button class="login-button">Войти</button></a>
+            </div>
+        </header>
+        <div class="actions-container">
+            <button class="edit-button">
+                <img src="{% static 'images/settings-icon.png' %}" alt="Редактировать">
+                Редактировать
+            </button>
+            <button class="logout-button">
+                <img src="{% static 'images/logout-icon.png' %}" alt="Выйти">
+                Выйти
+            </button>
+        </div>
+        <div class="main-content">
+            <div class="profile-container">
+                <div class="profile-photo">
+                    <span>Фото</span>
+                </div>
+                <div class="profile-name">
+                    {{ user.name }}
+                </div>
+                <div class="profile-info">
+                    <div class="info-item">Почта: {{ user.email }}</div>
+                    <div class="info-item">Дата рождения: {{ user.date_of_birth|date:'d.m.Y' }}</div>
+                    <!-- Здесь можно добавить другие данные -->
+                </div>
+            </div>
+        </div>
+        <div class="modal" id="editModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title">Редактирование профиля</h2>
+                    <button class="close-button" id="closeModal">&times;</button>
+                </div>
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="modal-body">
+                        <div class="modal-profile-photo">
+                            Фото
+                            <input type="file" id="profilePhotoUpload" accept="image/*">
+                        </div>
+                        <div class="modal-profile-name">
+                            {{ user.name }}
+                        </div>
+                        <div class="modal-form-group">
+                            <label class="modal-form-label">Почта</label>
+                            <input type="email" name="email" class="modal-form-input" value="{{ user.email }}">
+                        </div>
+                        <div class="modal-form-group">
+                            <label class="modal-form-label">Дата рождения</label>
+                            <input type="date" name="date_of_birth" class="modal-form-input" value="{{ user.date_of_birth|date:'Y-m-d' }}">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="cancel-button" id="cancelModal">Отмена</button>
+                        <button type="submit" class="save-button">Сохранить</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <script src="{% static 'profile.js' %}"></script>
+    </div>
+</body>
+</html>
