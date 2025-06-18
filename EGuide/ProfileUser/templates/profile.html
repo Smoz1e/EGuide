@@ -41,7 +41,7 @@
     <div class="profile-page">
         <header>
             <div class="logo-container">
-                <a href="/" style="text-decoration: none; color: inherit;">
+                <a href="###" style="text-decoration: none; color: inherit;">
                     <div class="logo">
                         <div class="logo-image">
                             <img src="{% static 'images/map.jpg' %}" alt="Карта">
@@ -51,7 +51,7 @@
                     </div>
                 </a>
             </div>
-            <div class="actions-container header-controls">
+            <div class="header-controls">
                 <button class="edit-button ">
                     <img src="{% static 'images/settings-icon.png' %}" alt="Редактировать">
                     Редактировать
@@ -61,9 +61,9 @@
                     Выйти
                 </button>
             </div>
-            <div class="header-controls">
+            {% comment %} <div class="header-controls">
                 <a href="{% url 'login' %}"><button class="login-button">Войти</button></a>
-            </div>
+            </div> {% endcomment %}
         </header>
         {% comment %} <div class="actions-container">
             <button class="edit-button">

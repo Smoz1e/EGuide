@@ -101,7 +101,7 @@ body {
             border: 2px solid #000000;
             background-color: transparent;
             position: relative;
-            top: 20px;
+            margin-right: 10px;
         }
 
         .logout-button img, .edit-button img {
