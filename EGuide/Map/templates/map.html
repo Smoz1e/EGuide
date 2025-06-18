@@ -4,8 +4,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'map.css' %}">
     <title>EGuide - Карта</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="{% static 'map.css' %}">
+    <style>
+        #mapid { height: 500px; width: 100%; border-radius: 20px; margin: 30px 0; }
+        .map-container {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            border-radius: 20px;
+            background: #fff;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+            padding: 30px 20px 30px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        #mapid {
+            height: 500px;
+            width: 100%;
+            max-width: 860px;
+            border-radius: 20px;
+            margin: 0 auto;
+            z-index: 1;
+        }
+        .filters-button {
+            margin-top: 20px;
+            z-index: 2;
+        }
+    </style>
 </head>
 <body>
     <div class="header">
@@ -22,7 +51,6 @@
             <img src="{% static 'images/search.png' %}" alt="Поиск" class="search-icon">
             <input type="text" class="search-input">
         </div>
-        <a href="{% url 'login' %}"><button class="login-button">Войти</button></a>
     </div>
 
     <div class="main-content">
@@ -68,11 +96,11 @@
                             <div class="review-header">
                                 <p class="review-author">Стас</p>
                                 <div class="review-stars">
-                                    <img src="../images/review-star.svg" alt="Звезда" class="review-star">
-                                    <img src="../images/review-star.svg" alt="Звезда" class="review-star">
-                                    <img src="../images/review-star.svg" alt="Звезда" class="review-star">
-                                    <img src="../images/review-star.svg" alt="Звезда" class="review-star">
-                                    <img src="../images/review-star.svg" alt="Звезда" class="review-star">
+                                    <img src="{% static 'images/review-star.svg' %}" alt="Звезда" class="review-star">
+                                    <img src="{% static 'images/review-star.svg' %}" alt="Звезда" class="review-star">
+                                    <img src="{% static 'images/review-star.svg' %}" alt="Звезда" class="review-star">
+                                    <img src="{% static 'images/review-star.svg' %}" alt="Звезда" class="review-star">
+                                    <img src="{% static 'images/review-star.svg' %}" alt="Звезда" class="review-star">
                                 </div>
                             </div>
                             <p class="review-text">Вежливые сотрудники</p>
@@ -87,11 +115,11 @@
                             <div class="review-header">
                                 <p class="review-author">Гена</p>
                                 <div class="review-stars">
-                                    <img src="../images/review-star.svg" alt="Звезда" class="review-star">
-                                    <img src="../images/review-star.svg" alt="Звезда" class="review-star">
-                                    <img src="../images/review-star.svg" alt="Звезда" class="review-star">
-                                    <img src="../images/review-star.svg" alt="Звезда" class="review-star">
-                                    <img src="../images/review-star.svg" alt="Звезда" class="review-star">
+                                    <img src="{% static "images/review-star.svg" %}" alt="Звезда" class="review-star">
+                                    <img src="{% static "images/review-star.svg" %}" alt="Звезда" class="review-star">
+                                    <img src="{% static "images/review-star.svg" %}" alt="Звезда" class="review-star">
+                                    <img src="{% static "images/review-star.svg" %}" alt="Звезда" class="review-star">
+                                    <img src="{% static "images/review-star.svg" %}" alt="Звезда" class="review-star">
                                 </div>
                             </div>
                             <p class="review-text">Просто найс!</p>
@@ -108,11 +136,11 @@
                             <div class="review-header">
                                 <p class="review-author">Саша Сиплый</p>
                                 <div class="review-stars">
-                                    <img src="../images/review-star.svg" alt="Звезда" class="review-star">
-                                    <img src="../images/review-star.svg" alt="Звезда" class="review-star">
-                                    <img src="../images/review-star.svg" alt="Звезда" class="review-star">
-                                    <img src="../images/review-star.svg" alt="Звезда" class="review-star">
-                                    <img src="../images/review-star.svg" alt="Звезда" class="review-star">
+                                    <img src="{% static "images/review-star.svg" %}" alt="Звезда" class="review-star">
+                                    <img src="{% static "images/review-star.svg" %}" alt="Звезда" class="review-star">
+                                    <img src="{% static "images/review-star.svg" %}" alt="Звезда" class="review-star">
+                                    <img src="{% static "images/review-star.svg" %}" alt="Звезда" class="review-star">
+                                    <img src="{% static "images/review-star.svg" %}" alt="Звезда" class="review-star">
                                 </div>
                             </div>
                             <p class="review-text">Помогли</p>
@@ -122,7 +150,7 @@
             </div>
         </div>
         <div class="map-container">
-            <span class="map-label">карта</span>
+            <div id="mapid"></div>
             <button class="filters-button">ФИЛЬТРЫ</button>
         </div>
         <div id="filterModal" class="filter-modal">
@@ -161,7 +189,14 @@
         <span>© EGuide 2025. Все права защищены.</span>
         <span>О нас</span>
     </div>
-
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        var map = L.map('mapid').setView([56.8389, 60.6057], 12); // Екатеринбург
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '© OpenStreetMap'
+        }).addTo(map);
+    </script>
     <script src="{% static 'map.js' %}"></script>
 </body>
 </html>
