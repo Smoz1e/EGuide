@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'Map',
     'ProfileUser',
     'RegisterAndAutor',
     'HomePage',

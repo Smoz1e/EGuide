@@ -51,11 +51,21 @@
                     </div>
                 </a>
             </div>
+            <div class="actions-container header-controls">
+                <button class="edit-button ">
+                    <img src="{% static 'images/settings-icon.png' %}" alt="Редактировать">
+                    Редактировать
+                </button>
+                <button class="logout-button">
+                    <img src="{% static 'images/logout-icon.png' %}" alt="Выйти">
+                    Выйти
+                </button>
+            </div>
             <div class="header-controls">
                 <a href="{% url 'login' %}"><button class="login-button">Войти</button></a>
             </div>
         </header>
-        <div class="actions-container">
+        {% comment %} <div class="actions-container">
             <button class="edit-button">
                 <img src="{% static 'images/settings-icon.png' %}" alt="Редактировать">
                 Редактировать
@@ -64,7 +74,7 @@
                 <img src="{% static 'images/logout-icon.png' %}" alt="Выйти">
                 Выйти
             </button>
-        </div>
+        </div> {% endcomment %}
         <div class="main-content">
             <div class="profile-container">
                 <div class="profile-photo">

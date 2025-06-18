@@ -1,0 +1,475 @@
+html, body {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            width: 100%;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', 'ABeeZee', sans-serif;
+        }
+        
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            overflow-x: hidden;
+            max-width: 100vw;
+        }
+        
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            border-bottom: 1px solid #e0e0e0;
+            width: 100%;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            margin-left: 40px;
+        }
+        
+        .logo-image {
+            position: relative;
+            width: 50px;
+            height: 50px;
+            background-color: transparent;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+        
+        .logo-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .logo-letter {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #fff;
+            font-weight: 700;
+            font-size: 30px;
+        }
+        
+        .logo-text {
+            font-weight: 700;
+            font-size: 30px;
+            margin-left: 2px;
+        }
+        
+        .search-container {
+            flex-grow: 1;
+            margin: 0 20px;
+            max-width: 650px;
+            position: relative;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 10px 15px 10px 40px;
+            border-radius: 40px;
+            border: 2px solid #000;
+            font-size: 16px;
+        }
+        
+        .search-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+        }
+        
+        .login-button {
+            background-color: #CFCFCF;
+            border: none;
+            border-radius: 40px;
+            padding: 10px 20px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+        
+
+        .main-content {
+            display: flex;
+            flex-grow: 1;
+            overflow: hidden;
+            width: 100%;
+            max-width: 100vw;
+            position: relative;
+        }
+        
+        .map-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #D9D9D9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .map-label {
+            font-size: 20px;
+        }
+        
+        .filters-button {
+            position: fixed;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: #CFCFCF;
+            border: none;
+            border-radius: 20px 20px 20px 20px;
+            padding: 50px 10px;
+            margin-right: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            z-index: 5;
+            box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+            writing-mode: tb-rl;
+            transform: rotate(180deg) translateY(50%);
+        }
+        
+        .filter-text {
+            display: block;
+            transform: rotate(180deg);
+            white-space: nowrap;
+        }
+        
+
+        .overview {
+            width: 480px;
+            border-right: 2px solid #000;
+            display: flex;
+            flex-direction: column;
+            overflow-y: visible;
+            overflow-x: hidden;
+            flex-shrink: 0;
+            border-top-left-radius: 30px;
+            border-top-right-radius: 30px;
+            background-color: #FFFFFF;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 10;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .info-container {
+            border: 2px solid #000;
+            border-radius: 60px;
+            padding: 25px;
+            margin: 15px;
+            overflow: hidden;
+        }
+        
+        .photo-container {
+            height: 180px;
+            background-color: #E8E8E8;
+            border-radius: 60px;
+            border: 3px solid #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 22px;
+            font-size: 24px;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 22px;
+        }
+        
+        .place-name {
+            font-size: 42px;
+            font-weight: 400;
+        }
+        
+        .buttons-container {
+            display: flex;
+            align-items: center;
+        }
+        
+        .route-button {
+            display: flex;
+            align-items: center;
+            background-color: #fff;
+            border: 3px solid #000;
+            border-radius: 7px;
+            padding: 6px 12px;
+            font-size: 24px;
+            cursor: pointer;
+            margin-right: 15px;
+        }
+        
+        .route-icon {
+            width: 24px;
+            height: 24px;
+            margin-right: 6px;
+        }
+        
+        .bookmark-button {
+            background: none;
+            border: 3px solid #000;
+            border-radius: 60px;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+        
+        .bookmark-button img {
+            width: 24px;
+            height: 24px;
+        }
+        
+        .rating-status {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 22px;
+        }
+        
+        .rating {
+            display: flex;
+            align-items: center;
+        }
+        
+        .star-icon {
+            width: 36px;
+            height: 36px;
+            margin-right: 7px;
+        }
+        
+        .rating-value {
+            font-size: 36px;
+            font-weight: 400;
+        }
+        
+        .status {
+            font-size: 36px;
+            font-weight: 400;
+        }
+        
+        .address, .hours, .website {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+        
+
+        .reviews-container {
+            padding: 15px;
+            flex-grow: 1;
+            overflow-y: visible;
+        }
+        
+        .reviews-title {
+            font-size: 36px;
+            margin-bottom: 30px;
+        }
+        
+        .review {
+            margin-bottom: 30px;
+            border-radius: 60px;
+            border: 3px solid #000;
+            padding: 15px;
+            overflow: hidden;
+        }
+        
+        .review-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #606060;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
+        .review-details {
+            flex: 1;
+        }
+        
+        .review-item {
+            display: flex;
+            margin-bottom: 22px;
+        }
+        
+        .review-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .review-author {
+            font-size: 24px;
+        }
+        
+        .review-text {
+            font-size: 28px;
+            font-weight: 400;
+            margin-left: 3px;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+        
+        .review-stars {
+            display: flex;
+        }
+        
+        .review-star {
+            width: 30px;
+            height: 30px;
+            margin-right: 3px;
+        }
+        
+        .your-review-title {
+            font-size: 36px;
+            margin: 30px 0;
+        }
+        
+        .review-divider {
+            height: 1.5px;
+            background-color: #000;
+            margin: 22px 0;
+        }
+        
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+            border-top: 1px solid #e0e0e0;
+            font-size: 20px;
+            letter-spacing: -10%;
+            position: relative;
+            z-index: 20;
+            background-color: #FFFFFF;
+        }
+        
+        .place-name, .address, .hours, .website, .reviews-title, .review-author, .your-review-title {
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            max-width: 100%;
+        }
+        
+        .filter-modal {
+            position: absolute;
+            right: -450px;
+            top: 0;
+            bottom: 0;
+            height: 100%;
+            background-color: #F5F5F5;
+            border-top: 2px solid #000;
+            border-left: 2px solid #000;
+            border-right: 2px solid #000;
+            border-radius: 40px 40px 0 0;
+            width: 400px;
+            padding: 40px 30px;
+            z-index: 15;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+            transition: right 0.3s ease-in-out;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            margin-left: 10px;
+        }
+        
+        .filter-modal.visible {
+            right: 0px;
+        }
+        
+        .close-button {
+            position: fixed;
+            right: -60px;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: #FFFFFF;
+            border: 2px solid #000;
+            border-radius: 20px 20px 20px 20px;
+            padding: 50px 10px;
+            margin-right: 1px;
+            font-size: 16px;
+            cursor: pointer;
+            z-index: 16;
+            box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+            writing-mode: tb-rl;
+            transform: rotate(180deg) translateY(50%);
+            transition: right 0.3s ease-in-out;
+        }
+        
+        .close-text {
+            display: block;
+            white-space: nowrap;
+        }
+        
+        .filter-modal.visible + .close-button {
+            right: 410px;
+        }
+        
+        .filter-title {
+            font-family: 'ABeeZee', sans-serif;
+            font-size: 36px;
+            font-weight: 400;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .filter-section {
+            margin-bottom: 35px;
+        }
+        
+        .filter-section-title {
+            font-family: 'ABeeZee', sans-serif;
+            font-size: 28px;
+            font-weight: 400;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        
+        .filter-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+            margin-bottom: 25px;
+            justify-content: center;
+        }
+        
+        .filter-option {
+            background-color: #FFFFFF;
+            border: 2px solid #000000;
+            border-radius: 40px;
+            padding: 15px 20px;
+            font-family: 'ABeeZee', sans-serif;
+            font-size: 22px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            text-align: center;
+            width: 340px;
+            box-sizing: border-box;
+        }
+        
+        .filter-option.selected {
+            background-color: #e0e0e0;
+        }

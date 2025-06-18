@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EGuide - Карта</title>
+</head>
+<body>
+    <div class="header">
+        <a href="index.html" style="text-decoration: none; color: inherit;">
+            <div class="logo">
+                <div class="logo-image">
+                    <img src="../images/map.jpg" alt="Карта">
+                    <span class="logo-letter">E</span>
+                </div>
+                <span class="logo-text">Guide</span>
+            </div>
+        </a>
+        <div class="search-container">
+            <img src="../images/search.png" alt="Поиск" class="search-icon">
+            <input type="text" class="search-input">
+        </div>
+        <a href="login.html"><button class="login-button">Войти</button></a>
+    </div>
+
+    <div class="main-content">
+        <div class="overview">
+            <div class="info-container">
+                <div class="header-container">
+                    <h1 class="place-name">МФЦ</h1>
+                    <div class="buttons-container">
+                        <button class="route-button">
+                            <img src="../images/distance_icon.png" alt="Расстояние" class="route-icon">
+                            <span>Маршрут</span>
+                        </button>
+                        <button class="bookmark-button">
+                            <img src="../images/bookmark.svg" alt="Закладка">
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="photo-container">
+                    <span>фото</span>
+                </div>
+                <div class="rating-status">
+                    <div class="rating">
+                        <img src="../images/star.svg" alt="Звезда" class="star-icon">
+                        <span class="rating-value">4.8</span>
+                    </div>
+                    <div class="status">ОТКРЫТО</div>
+                </div>
+                <div class="place-details">
+                    <p class="address">Адрес: ул. 8 Марта, 13</p>
+                    <p class="hours">Время работы: 8:00-18:00</p>
+                    <p class="website"><a href="https://www.web.com" target="_blank" style="color: inherit; text-decoration: none;">www.web.com</a></p>
+                </div>
+            </div>
+
+            <div class="reviews-container">
+                <h2 class="reviews-title">Отзывы (4.8, 971 оценка)</h2>
+                
+                <div class="review">
+                    <div class="review-item">
+                        <div class="review-avatar"></div>
+                        <div class="review-details">
+                            <div class="review-header">
+                                <p class="review-author">Стас</p>
+                                <div class="review-stars">
+                                    <img src="../images/review-star.svg" alt="Звезда" class="review-star">
+                                    <img src="../images/review-star.svg" alt="Звезда" class="review-star">
+                                    <img src="../images/review-star.svg" alt="Звезда" class="review-star">
+                                    <img src="../images/review-star.svg" alt="Звезда" class="review-star">
+                                    <img src="../images/review-star.svg" alt="Звезда" class="review-star">
+                                </div>
+                            </div>
+                            <p class="review-text">Вежливые сотрудники</p>
+                        </div>
+                    </div>
+                    
+                    <div class="review-divider"></div>
+                    
+                    <div class="review-item">
+                        <div class="review-avatar"></div>
+                        <div class="review-details">
+                            <div class="review-header">
+                                <p class="review-author">Гена</p>
+                                <div class="review-stars">
+                                    <img src="../images/review-star.svg" alt="Звезда" class="review-star">
+                                    <img src="../images/review-star.svg" alt="Звезда" class="review-star">
+                                    <img src="../images/review-star.svg" alt="Звезда" class="review-star">
+                                    <img src="../images/review-star.svg" alt="Звезда" class="review-star">
+                                    <img src="../images/review-star.svg" alt="Звезда" class="review-star">
+                                </div>
+                            </div>
+                            <p class="review-text">Просто найс!</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <h3 class="your-review-title">Ваш отзыв</h3>
+                
+                <div class="review">
+                    <div class="review-item">
+                        <div class="review-avatar"></div>
+                        <div class="review-details">
+                            <div class="review-header">
+                                <p class="review-author">Саша Сиплый</p>
+                                <div class="review-stars">
+                                    <img src="../images/review-star.svg" alt="Звезда" class="review-star">
+                                    <img src="../images/review-star.svg" alt="Звезда" class="review-star">
+                                    <img src="../images/review-star.svg" alt="Звезда" class="review-star">
+                                    <img src="../images/review-star.svg" alt="Звезда" class="review-star">
+                                    <img src="../images/review-star.svg" alt="Звезда" class="review-star">
+                                </div>
+                            </div>
+                            <p class="review-text">Помогли</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="map-container">
+            <span class="map-label">карта</span>
+            <button class="filters-button">ФИЛЬТРЫ</button>
+        </div>
+        <div id="filterModal" class="filter-modal">
+            <h2 class="filter-title">ФИЛЬТРЫ</h2>
+            
+            <div class="filter-section">
+                <h3 class="filter-section-title">ТИП ЗАВЕДЕНИЯ</h3>
+                <div class="filter-options">
+                    <div class="filter-option">Рестораны, бары, кафе</div>
+                    <div class="filter-option">Достопримечательности</div>
+                    <div class="filter-option">Общественные здания</div>
+                </div>
+            </div>
+            
+            <div class="filter-section">
+                <h3 class="filter-section-title">РЕЙТИНГ</h3>
+                <div class="filter-options">
+                    <div class="filter-option">5</div>
+                    <div class="filter-option">4</div>
+                    <div class="filter-option">3 и ниже</div>
+                </div>
+            </div>
+            
+            <div class="filter-section">
+                <h3 class="filter-section-title">МАРШРУТ</h3>
+                <div class="filter-options">
+                    <div class="filter-option">Пешком</div>
+                    <div class="filter-option">Общественный транспорт</div>
+                    <div class="filter-option">Автомобиль</div>
+                </div>
+            </div>
+        </div>
+        <button class="close-button"><span class="close-text">ЗАКРЫТЬ</span></button>
+    </div>
+    <div class="footer">
+        <span>© EGuide 2025. Все права защищены.</span>
+        <span>О нас</span>
+    </div>
+
+    <script src="../js/map.js"></script>
+</body>
+</html>
